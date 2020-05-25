@@ -1,5 +1,6 @@
 package ABS;
 import java.io.*;
+import java.util.ArrayList;
 
 public class DataOutStreamExample {
     public static void main(String[] args) throws Exception {
@@ -14,5 +15,23 @@ public class DataOutStreamExample {
         byte[] buff = s.getBytes();
         bufOutStream.write(buff, 0, buff.length);
         bufOutStream.close();
+
+        ArrayList<String> list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String filename = reader.readLine();
+        while (true) {
+            String buf = reader.readLine();
+            if (buf.equals("exit")) {
+                list.add(buf+"\n");
+                break;
+            } else {
+                list.add(buf+"\n");
+            }
+        }
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+        for (int i = 0; i < list.size(); i++){
+            writer.write(list.get(i));
+        }
+        writer.close();
     }
 }
