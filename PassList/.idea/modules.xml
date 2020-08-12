@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PasslistJava.iml" filepath="$PROJECT_DIR$/PasslistJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PassList.iml" filepath="$PROJECT_DIR$/PassList.iml" />
     </modules>
   </component>
 </project>
