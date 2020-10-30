@@ -5,31 +5,32 @@ import java.util.ArrayList;
 
 public class MidQuad {
     public static void main(String[] args) throws IOException {
-        ArrayList<Float> floatList = new ArrayList<>();
-        try(BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in))) {
-            System.out.println("Введите 10 чисел через пробел, после ввода нажмите Enter:)");
-            for(int i = 0; i < 10; i++){
-                floatList.add(Float.parseFloat(consoleReader.readLine()));
-            }
-        }
+        ArrayList<Double> doubleList = new ArrayList<>();
+        double quad = 0;
+        doubleList.add((double) 600);
+        doubleList.add((double) 470);
+        doubleList.add((double) 170);
+        doubleList.add((double) 430);
+        doubleList.add((double) 300);
+        quad = MidQuadSearch(doubleList);
+        System.out.println("Среднее квадратическое массива = " + quad);
     }
 
-    public float MidQuadSearch(ArrayList<Float> floatList){
-        float result = 0;
-        float midArith = 0;
-        float dispers = 0;
-        ArrayList<Float> dispList = new ArrayList<>();
-        for (int i = 0; i < floatList.size(); i++) {
-            midArith = midArith + floatList.get(i);
+    public static double MidQuadSearch(ArrayList<Double> doubleList){
+        double midArith = 0;
+        double dispers = 0;
+        ArrayList<Double> dispList = new ArrayList<>();
+        for (int i = 0; i < doubleList.size(); i++) {
+            midArith = midArith + doubleList.get(i);
         }
-        midArith = midArith / 10;
-        for (int i = 0; i < floatList.size(); i++) {
-            dispList.add(floatList.get(i) * 2);
+        midArith = midArith / doubleList.size();
+        for (int i = 0; i < doubleList.size(); i++) {
+            dispList.add(Math.pow((doubleList.get(i) - midArith), 2));
         }
         for (int i = 0; i < dispList.size(); i++) {
             dispers = dispers + dispList.get(i);
         }
-        result = dispers;
-        return result;
+        dispers = dispers / dispList.size();
+        return Math.sqrt(dispers);
     }
 }
